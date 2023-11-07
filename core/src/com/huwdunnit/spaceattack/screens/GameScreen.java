@@ -3,6 +3,7 @@ package com.huwdunnit.spaceattack.screens;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -71,6 +72,15 @@ public class GameScreen implements Screen {
 
     private void updatePlayer() {
         player.update();
+        blockPlayerFromLeavingTheWorld();
+    }
+
+    private void blockPlayerFromLeavingTheWorld() {
+        float playerX = MathUtils.clamp(player.getX(),
+                player.getWidth() / 2,
+                GameConfig.WORLD_WIDTH - player.getWidth() / 2);
+
+        player.setPosition(playerX, player.getY());
     }
 
     private void renderDebug() {

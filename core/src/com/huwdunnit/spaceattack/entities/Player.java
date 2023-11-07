@@ -47,6 +47,18 @@ public class Player {
         updateBounds();
     }
 
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public float getWidth() {
+        return SIZE;
+    }
+
     private void updateBounds() {
         bounds.setPosition(x, y);
     }
